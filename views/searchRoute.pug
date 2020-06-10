@@ -1,0 +1,36 @@
+extends base
+
+block content
+  main.main1
+    .map-left
+        .login-form
+            .from.form__label
+                label.form__label(for='from') From
+                input#search-from.form__input(placeholder='Source', size=50 )
+            .to.form__label
+                label.form__label(for='to') To
+                input#search-to.form__input( placeholder='Destinaton',size=50 )
+            .submit(style="margin-top:15px;")
+                button#search-btn.btn.btn--green.btn--small(onClick="calculateDistance()")
+                    | Search
+        br         
+        .login-form1
+            #output
+            button.dPanel.btn.btn--green.btn--small Complete Route
+            .popup-wrapper
+                .popup
+                    .popup-close X
+                    .popup-content
+                        #dPanel(style="max-height:250px; overflow-x:overlay;")            
+    .map-right
+        #map1.width.right.height-100
+
+
+
+block site-js
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALpGeAk2H6Pfw1e6TKTBEF-vO17eLSvqs&callback=initMap&libraries=places" async defer)
+    script.
+        window.onload = function() {
+            searchBox();
+        };
+          
